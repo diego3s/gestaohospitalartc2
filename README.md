@@ -1,2 +1,2 @@
 # gestaohospitalartc2
-Sistema de Gestão Hospital feito para disciplina de Tópicos em Computação II
+Sistema de Gestão Hospitalar feito para disciplina de Tópicos em Computação II
