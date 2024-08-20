@@ -1,56 +1,52 @@
 version: '3.8'
+
 services:
+  # PHP Service
   app:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: laravel_app
+    container_name: app
+    working_dir: /var/www
     volumes:
-      - ./app:/var/www/html
+      - ./gestaohospitalartc2:/var/www
+      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
       - laravel
-
-  php-fpm:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: php-fpm
-    volumes:
-      - ./app:/var/www/html
-    networks:
-      - laravel
-
-  nginx:
-    image: nginx:latest
-    container_name: nginx
     ports:
-      - "8080:80"
+      - "8000:8000" # PHP-FPM port
+
+  # Nginx Service
+  webserver:
+    image: nginx:alpine
+    container_name: webserver
+    working_dir: /var/www
     volumes:
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-      - ./app:/var/www/html
-    depends_on:
-      - php-fpm
+      - ./gestaohospitalartc2:/var/www
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
     networks:
       - laravel
+    ports:
+      - "80:80"
 
-  mysql:
-    image: mysql:8.0
-    container_name: mysql
+  # MySQL Service
+  db:
+    image: mysql:5.7
+    container_name: db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: secret
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - laravel
     ports:
       - "3306:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: root_password
-      MYSQL_DATABASE: laravel_db
-      MYSQL_USER: laravel_user
-      MYSQL_PASSWORD: laravel_password
-    volumes:
-      - mysql_data:/var/lib/mysql
-    networks:
-      - laravel
 
 networks:
   laravel:
-    driver: bridge
 
 volumes:
-  mysql_data:
+  dbdata:
