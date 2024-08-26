@@ -24,7 +24,7 @@ services:
     ports: 
         - "${MYSQL_HOST_PORT}:${MYSQL_DOCKER_CONTAINER_PORT}"
     volumes: 
-        - ./mysql:/var/lib/mysql
+        - mysql-data:/var/lib/mysql
     environment: 
         MYSQL_DATABASE: ${DATABASE_NAME}
         MYSQL_USER: ${MYSQL_USER}
@@ -51,5 +51,8 @@ services:
       - hospitaltc2
 
 networks:
-   hospitaltc2:
-     driver: bridge
+  hospitaltc2:
+    driver: bridge
+
+volumes:
+  mysql-data:
