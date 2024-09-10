@@ -1,3 +1,3 @@
 <h1>
-    {{auth()->user()->cargo}}
+    {{auth()->user()->cargo ?? "Sem Login" }}
 </h1>

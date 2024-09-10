@@ -21,7 +21,7 @@ Route::resource('/funcionarios', FuncionariosController::class);
 
 Route::get('/test', function () {
     return view('welcome');
-})->name('diretortest')->middleware([Checkrole::class, 'diretor']);
+})->name('diretortest')->middleware('checkrole:diretor');
 
 /*
 TO DO   
@@ -37,13 +37,20 @@ Models
 
 Com cadastro de funcionarios => Pode fazer login e tem acesso a role
 Pode fazer login [X]
-Tem acesso a role => + ou -
-Autenticação [X] => middleware nao funciona
+Tem acesso a role [X]
+Autenticação [X] => middleware funciona [X]
 
 --- Campos obrigatórios ..?
 
 --- Estoque
-> restringir acesso
 > CRUD estoque
+
++ item(descicao, quant)
+  edit item
+  Saída de Item [ ]
+    find(produto)
+    produto->quantidade < quantidade
+        falha
+    produto->quantidade -= quantidade
 
 */
