@@ -13,7 +13,7 @@ class FuncionariosController extends Controller
     public function index()
     {
         $funcionarios = Funcionario::with('user')->get();
-        return view('funcionarios.index', compact('funcionarios'));
+        return view('Funcionarios.index', compact('funcionarios'));
     }
 
     /**
@@ -21,7 +21,7 @@ class FuncionariosController extends Controller
      */
     public function create()
     {
-        return view('funcionarios.create');
+        return view('Funcionarios.create');
     }
 
     /**
@@ -47,7 +47,7 @@ class FuncionariosController extends Controller
       */
     public function show(Funcionario $funcionario)
     {
-        return view('funcionarios.show', compact('funcionario'));
+        return view('Funcionarios.show', compact('funcionario'));
     }
 
     /**
@@ -55,7 +55,7 @@ class FuncionariosController extends Controller
      */
     public function edit(Funcionario $funcionario)
     {
-        return view('funcionarios.edit', compact('funcionario'));
+        return view('Funcionarios.edit', compact('funcionario'));
     }
 
     /**
