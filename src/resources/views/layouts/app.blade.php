@@ -9,7 +9,8 @@
 
     <!-- Bootstrap CSS (opcional, mas comum em projetos Laravel) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
     <!-- Qualquer estilo adicional -->
     <style>
         body {
@@ -19,7 +20,7 @@
 </head>
 <body>
     <!-- Barra de navegação (menu) -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Gestão Hospitalar</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,9 +28,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('funcionarios.index') }}">Funcionários</a>
-                    </li>
+                    
                     <!-- Adicione outros links de navegação conforme necessário -->
                 </ul>
 
@@ -37,20 +36,27 @@
                 <ul class="navbar-nav">
                     @auth
                         <li class="nav-item">
-                            <a class="nav-link">Bem-vindo, {{ auth()->user()->name }}</a>
+                            <a class="nav-link">
+                                <i class="bi bi-person"></i> Bem-vindo, {{ auth()->user()->name }}
+                            </a>
                         </li>
                         <li class="nav-item">
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-                                <button class="nav-link btn btn-link" type="submit">Sair</button>
+                                <button class="nav-link btn btn-link" type="submit">
+                                    <i class="bi bi-box-arrow-right"></i> Sair
+                                </button>
                             </form>
                         </li>
                     @else
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">Login</a>
+                            <a class="nav-link" href="{{ route('login') }}">
+                                <i class="bi bi-box-arrow-in-right"></i> Login
+                            </a>
                         </li>
                     @endauth
                 </ul>
+                
             </div>
         </div>
     </nav>

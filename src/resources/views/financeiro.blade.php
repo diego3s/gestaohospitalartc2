@@ -1,3 +1,5 @@
+@extends('layouts.app')
+
 @section('content')
 <div class="container mt-5">
     <h2 class="mb-4">Gerenciamento</h2>
@@ -5,9 +7,8 @@
     <!-- Definindo o array diretamente na view -->
     @php
         $items = [
-            'funcionarios.index' => 'Funcionários',
-            'pacientes.index' => 'Pacientes',
-            'financeiro' => 'Financeiro',
+            'pagar.index' => 'Pagar',
+            'receber.index' => 'Receber'
         ];
     @endphp
 
@@ -19,8 +20,6 @@
                 <i class="bi bi-people-fill me-3"></i> <!-- Ícone para 'Funcionários' -->
             @elseif($item == 'Pacientes')
                 <i class="bi bi-person-fill me-3"></i> <!-- Ícone para 'Pacientes' -->
-            @elseif($item == 'Financeiro')
-                <i class="bi bi-person-fill me-3"></i>
             @endif
             {{ $item }}
         </a>

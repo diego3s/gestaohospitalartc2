@@ -17,7 +17,7 @@ class CheckRole
     public function handle(Request $request, Closure $next, $cargo): Response
     {
         if(!Auth::check() || Auth::user()->cargo !== $cargo)
-            return redirect('/');
+            return redirect('/welcome');
 
         return $next($request);
     }
