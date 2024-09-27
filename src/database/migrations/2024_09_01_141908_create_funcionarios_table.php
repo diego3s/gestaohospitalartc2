@@ -18,7 +18,7 @@ return new class extends Migration
         Schema::create('funcionarios', function (Blueprint $table) {
             $table->id(); 
             $table->unsignedBigInteger('user_id')->nullable(); 
-            $table->string('cpf', 14); 
+            // $table->string('cpf', 14); 
             $table->string('telefone', 15); 
             $table->decimal('salario', 10, 2); // até 10 digitos com 2 casas decimais
             $table->string('nome_completo'); 
