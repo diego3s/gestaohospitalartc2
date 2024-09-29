@@ -29,8 +29,10 @@ class FuncionariosController extends Controller
      */
     public function store(Request $request)
     {
+
         $user = new User;
         $user->fill($request->input('usuario'));
+        $user->name = $request->input('funcionario.nome');
         $user->save();
 
         $funcionario = new Funcionario;

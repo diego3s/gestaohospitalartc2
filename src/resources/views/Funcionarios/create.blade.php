@@ -19,18 +19,8 @@
             @csrf
 
             <div class="form-group">
-                <label for="nome_completo">Nome Completo</label>
-                <input type="text" class="form-control" name="funcionario[nome_completo]" value="{{ old('nome_completo') }}" required>
-            </div>
-
-            <div class="form-group">
-                <label for="nome_completo">Nome de Usuário</label>
-                <input type="text" class="form-control" name="usuario[name]" value="{{ old('nome') }}" required>
-            </div>
-
-            <div class="form-group">
-                <label for="cpf">CPF</label>
-                <input type="text" class="form-control" name="funcionario[cpf]" value="{{ old('cpf') }}" required>
+                <label for="nome_completo">Nome</label>
+                <input type="text" class="form-control" name="funcionario[nome]" value="{{ old('nome') }}" required>
             </div>
 
             <div class="form-group">
@@ -45,18 +35,16 @@
 
             <div class="form-group">
                 <label for="cargo">Cargo</label>
-                <select class="form-control" id="cargo" name="usuario[cargo]" value="{{ old('cargo') }}" required>
+                <select class="form-control" id="cargo" name="usuario[cargo]" required>
                     <option value="" disabled selected>Selecione o cargo</option>
-                    <option value="recepcionista">Recepcionista</option>
-                    <option value="enfermeiro">Enfermeiro</option>
-                    <option value="tecnico">Técnico de Laboratório</option>
-                    <option value="medico">Médico</option>
-                    <option value="administrativo">Administrativo</option>
-                    <option value="diretor">Diretor Clínico</option>
+                    <option value="Administrativo">Administrativo</option>
+                    <option value="Enfermeiro">Enfermeiro</option>
+                    <option value="Laboratorista">Laboratorista</option>
+                    <option value="Medico">Médico</option>
+                    <option value="Recepcionista">Recepcionista</option>                    
                 </select>
             </div>
 
-            <!-- Informações de Usuário -->
             <h3>Dados de Login do Funcionário</h3>
             <div class="form-group">
                 <label for="email">Email</label>

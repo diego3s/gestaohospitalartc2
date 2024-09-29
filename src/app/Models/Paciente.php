@@ -15,8 +15,10 @@ class Paciente extends Model
     protected $fillable = [
         'cpf',
         'nome',
+        'telefone',
         'data_nascimento',
         'genero',
+        'contato_emergencia',
         'estado_civil',
     ];
 }

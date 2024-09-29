@@ -46,7 +46,7 @@ services:
     volumes: 
       - ./src:/var/www/app
     ports: 
-      - "${PHP_HOST_PORT}:${PHP_DOCKER_CONTAINER_PORT}"
+      - "8000:8000"
     networks: 
       - hospitaltc2
 

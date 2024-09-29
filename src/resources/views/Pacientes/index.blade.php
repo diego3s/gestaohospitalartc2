@@ -17,8 +17,8 @@
                 <tr>
                     <th>ID</th>
                     <th>Nome</th>
-                    <th>CPF</th>
-                    <th>Genero</th>
+                    <th>Data de Nascimento</th>
+                    <th>Contato de Emergência</th>
                     <th>Ações</th>
                 </tr>
             </thead>
@@ -27,8 +27,8 @@
                     <tr>
                         <td>{{ $paciente->id }}</td>
                         <td>{{ $paciente->nome }}</td>
-                        <td>{{ $paciente->cpf }}</td>
-                        <td>{{ $paciente->genero }}</td>
+                        <td>{{ $paciente->data_nascimento }}</td>
+                        <td>{{ $paciente->contato_emergencia }}</td>
                         <td>
                             <a href="{{ route('pacientes.show', $paciente->id) }}" class="btn btn-info">Visualizar</a>
                             <a href="{{ route('pacientes.edit', $paciente->id) }}" class="btn btn-warning">Editar</a>

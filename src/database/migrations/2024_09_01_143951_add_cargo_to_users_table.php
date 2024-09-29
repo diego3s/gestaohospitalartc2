@@ -13,7 +13,7 @@ class AddCargoToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('cargo')->default('mancebo'); // adiciona o campo 'cargo' com valor padrão 'mancebo'
+            $table->string('cargo')->after('name')->default('mancebo'); // adiciona o campo 'cargo' com valor padrão 'mancebo'
         });
     }
 

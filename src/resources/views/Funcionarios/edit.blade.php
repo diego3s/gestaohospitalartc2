@@ -20,18 +20,8 @@
             @method('PUT')
 
             <div class="form-group">
-                <label for="nome_completo">Nome Completo</label>
-                <input type="text" class="form-control" name="funcionario[nome_completo]" value="{{ old('nome_completo', $funcionario->nome_completo) }}" required>
-            </div>
-
-            <div class="form-group">
-                <label for="nome_completo">Nome de Usuário</label>
-                <input type="text" class="form-control" name="usuario[name]" value="{{ old('name', $funcionario->user->name) }}" required>
-            </div>
-
-            <div class="form-group">
-                <label for="cpf">CPF</label>
-                <input type="text" class="form-control" name="funcionario[cpf]" value="{{ old('cpf', $funcionario->cpf) }}" required>
+                <label for="nome_completo">Nome</label>
+                <input type="text" class="form-control" name="funcionario[nome]" value="{{ old('nome', $funcionario->nome) }}" required>
             </div>
 
             <div class="form-group">
@@ -47,13 +37,11 @@
             <div class="form-group">
                 <label for="cargo">Cargo</label>
                 <select class="form-control" id="cargo" name="usuario[cargo]" value="{{ old('cargo', $funcionario->user->cargo) }}" required>
-                    <option value="" disabled selected>Selecione o cargo</option>
-                    <option value="recepcionista">Recepcionista</option>
-                    <option value="enfermeiro">Enfermeiro</option>
-                    <option value="tecnico">Técnico de Laboratório</option>
-                    <option value="medico">Médico</option>
-                    <option value="administrativo">Administrativo</option>
-                    <option value="diretor">Diretor Clínico</option>
+                    <option value="Administrativo" {{ $funcionario->user->cargo == 'Administrativo' ? 'selected' : '' }}>Administrativo</option>
+                    <option value="Enfermeiro" {{ $funcionario->user->cargo == 'Enfermeiro' ? 'selected' : '' }}>Enfermeiro</option>
+                    <option value="Laboratorista" {{ $funcionario->user->cargo == 'Laboratorista' ? 'selected' : '' }}>Laboratorista</option>
+                    <option value="Medico" {{ $funcionario->user->cargo == 'Medico' ? 'selected' : '' }}>Médico</option>
+                    <option value="Recepcionista" {{ $funcionario->user->cargo == 'Recepcionista' ? 'selected' : '' }}>Recepcionista</option>  
                 </select>
             </div>
 

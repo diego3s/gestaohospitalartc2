@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('a_receber', function (Blueprint $table) {
+        Schema::create('dividas', function (Blueprint $table) {
             $table->id();
-            $table->decimal('valor', 15, 2);
+            $table->decimal('valor', 10, 2);
             $table->string('cobrador');
             $table->timestamps();
         });
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('a_receber');
+        Schema::dropIfExists('dividas');
     }
 };

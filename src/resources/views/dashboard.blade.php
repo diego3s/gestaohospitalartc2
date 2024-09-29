@@ -7,7 +7,7 @@
         $items = [
             'funcionarios.index' => 'Funcionários',
             'pacientes.index' => 'Pacientes',
-            'financeiro' => 'Financeiro',
+            //'financeiro' => 'Financeiro', 
         ];
     @endphp
 

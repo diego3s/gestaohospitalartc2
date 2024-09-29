@@ -12,11 +12,7 @@
             </tr>
             <tr>
                 <th>Nome Completo:</th>
-                <td>{{ $funcionario->nome_completo }}</td>
-            </tr>
-            <tr>
-                <th>CPF:</th>
-                <td>{{ $funcionario->cpf }}</td>
+                <td>{{ $funcionario->nome}}</td>
             </tr>
             <tr>
                 <th>Telefone:</th>
@@ -30,6 +26,8 @@
                 <th>Email:</th>
                 <td>{{ $funcionario->user->email ?? 'nao informado' }}</td>
             </tr>
+
+
         </table>
 
         <a href="{{ route('funcionarios.index') }}" class="btn btn-primary">Voltar</a>

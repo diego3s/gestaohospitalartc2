@@ -16,19 +16,20 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Nome Completo</th>
-                    <th>CPF</th>
+                    <th>Nome</th>
                     <th>Telefone</th>
-                    <th>Ações</th>
+                    <th>Salário</th>
+                    <th>Cargo</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($funcionarios as $funcionario)
                     <tr>
                         <td>{{ $funcionario->id }}</td>
-                        <td>{{ $funcionario->nome_completo }}</td>
-                        <td>{{ $funcionario->cpf }}</td>
+                        <td>{{ $funcionario->nome }}</td>
                         <td>{{ $funcionario->telefone }}</td>
+                        <td>{{ $funcionario->salario }}</td>
+                        <td>{{ $funcionario->user->cargo }}</td>
                         <td>
                             <a href="{{ route('funcionarios.show', $funcionario->id) }}" class="btn btn-info">Visualizar</a>
                             <a href="{{ route('funcionarios.edit', $funcionario->id) }}" class="btn btn-warning">Editar</a>
@@ -37,6 +38,7 @@
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</button>
                             </form>
+                            <a class="btn btn-info">Documentos</a>
                         </td>
                     </tr>
                 @endforeach

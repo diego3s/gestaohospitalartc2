@@ -18,16 +18,14 @@ return new class extends Migration
         Schema::create('funcionarios', function (Blueprint $table) {
             $table->id(); 
             $table->unsignedBigInteger('user_id')->nullable(); 
-            // $table->string('cpf', 14); 
+            $table->string('nome');
             $table->string('telefone', 15); 
-            $table->decimal('salario', 10, 2); // até 10 digitos com 2 casas decimais
-            $table->string('nome_completo'); 
-            $table->timestamps(); //
+            $table->decimal('salario', 10, 2); // até 10 digitos com 2 casas decimais 
+            $table->timestamps(); 
 
             
             $table->foreign('user_id')
                   ->references('id')->on('users')
-                  //->onDelete('set null'); // Se o usuário for deletado, mantém o funcionário com user_id nulo
                   ->onDelete('cascade'); // Deleta a porra toda
         });
     }

@@ -23,9 +23,6 @@ Route::get('/financeiro', function (){
     return view('financeiro');
 })->name('financeiro')->middleware('checkrole:diretor');
 
-Route::resource('/pagar', APagarController::class);
-Route::resource('/receber', AReceberController::class);
-
 Route::post('/welcome', function () {
     return view('welcome');
 });

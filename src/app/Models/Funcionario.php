@@ -9,10 +9,9 @@ class Funcionario extends Model
 
     protected $fillable = [
         'user_id',
-        'cpf',
+        'nome',
         'telefone',
         'salario',
-        'nome_completo',
     ];
 
     // um funcionário pertence a um usuário
@@ -23,5 +22,9 @@ class Funcionario extends Model
 
     public function endereco(){
         return $this->hasOne(Endereco::class);
+    }
+
+    public function medico(){
+        return $this->hasOne(Medico::class);
     }
 }
