@@ -22,4 +22,9 @@ class Medico extends Model
     public function funcionario(){
         return $this->belongsTo(Funcionario::class);
     }
+
+    public function consultas(){
+        return $this->hasMany(Consulta::class);
+    }
+
 }

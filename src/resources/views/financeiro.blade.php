@@ -7,8 +7,8 @@
     <!-- Definindo o array diretamente na view -->
     @php
         $items = [
-            'pagar.index' => 'Pagar',
-            'receber.index' => 'Receber'
+            'dividas.index' => 'Dívidas',
+            'cobrancas.index' => 'Cobranças'
         ];
     @endphp
 
@@ -16,9 +16,9 @@
     <div class="list-group">
         @foreach($items as $key => $item)
         <a href="{{ route($key) }}" class="list-group-item list-group-item-action d-flex align-items-center">
-            @if($item == 'Funcionários')
+            @if($item == 'Dívidas')
                 <i class="bi bi-people-fill me-3"></i> <!-- Ícone para 'Funcionários' -->
-            @elseif($item == 'Pacientes')
+            @elseif($item == 'Cobranças')
                 <i class="bi bi-person-fill me-3"></i> <!-- Ícone para 'Pacientes' -->
             @endif
             {{ $item }}

@@ -8,17 +8,17 @@
  * Users(id, name, email, password, cargo)
  * Funcionarios(id, nome, user_id, telefone, salario)
  * Pacientes(id, cpf, nome, telefone, data_nascimento, genero, contato_emergencia, estado_civil) 
+ * Dividas(id, valor, cobrador)
+ * Cobranças(id, valor, devedor)
 
 ...
 
 # Edit Funcionário => add Documentação do Funcionário
 * Formulário Condicional
 Instanciar em Create Funcionario?
+Remover Cargo de Edit Funcionario
 
-### trocar 'a pagar' e 'a receber' por  Dividas e Cobrancas [ok]
-# Refazer o Front => Dividas e Cobrancas
-* Dividas(id, valor, cobrador)
-* Cobranças(id, valor, devedor)
+@section('title', 'Cobranças')
 
 ## Implementar
 * Consultas(id, medico_id, paciente_id, data-consulta, descricao)

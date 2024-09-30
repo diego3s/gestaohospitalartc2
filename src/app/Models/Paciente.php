@@ -21,4 +21,9 @@ class Paciente extends Model
         'contato_emergencia',
         'estado_civil',
     ];
+
+    public function consultas(){
+        return $this->hasMany(Consulta::class);
+    }
+
 }

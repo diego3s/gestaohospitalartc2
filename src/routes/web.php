@@ -7,6 +7,8 @@ use App\Http\Controllers\PacientesController;
 use App\Http\Controllers\APagarController;
 use App\Http\Controllers\AReceberController;
 use App\Http\Middleware\CheckRole;
+use App\Http\Controllers\DividasController;
+use App\Http\Controllers\CobrancasController;
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -21,7 +23,10 @@ Route::resource('/pacientes', PacientesController::class);
 
 Route::get('/financeiro', function (){
     return view('financeiro');
-})->name('financeiro')->middleware('checkrole:diretor');
+})->name('financeiro')->middleware('checkrole:Administrativo');
+
+Route::resource('/financeiro/dividas', DividasController::class);
+Route::resource('/financeiro/cobrancas', CobrancasController::class);
 
 Route::post('/welcome', function () {
     return view('welcome');
@@ -34,37 +39,9 @@ Route::get('/welcome', function () {
 /*
 TO DO   
 
-CRUD paciente
+CRUD Consultas
 
-
-Migrations
-Models
-
---- Cadastro de Funcionarios c/ seleção de role
-> view de cadastro [X]
-> controller de cadastro [X]
-> $request => Controller [X]
->> Salvar entradas no Banco [X] [..?]
-
-
-Com cadastro de funcionarios => Pode fazer login e tem acesso a role
-Pode fazer login [X]
-Tem acesso a role [X]
-Autenticação [X] => middleware funciona [X]
-
---- Campos obrigatórios ..?
-
---- Estoque
-> CRUD estoque
-
-+ item(descicao, quant)
-  edit item
-  Saída de Item [ ]
-    find(produto)
-    produto->quantidade < quantidade
-        falha
-    produto->quantidade -= quantidade
-
+Cadastro de Funcionarios c/ seleção de role
 
 
 Front
