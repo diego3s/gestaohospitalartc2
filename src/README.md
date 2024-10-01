@@ -13,10 +13,10 @@
 
 ...
 
-# Edit Funcionário => add Documentação do Funcionário
+# create funcionario
 * Formulário Condicional
-Instanciar em Create Funcionario?
-Remover Cargo de Edit Funcionario
+
+jogar cargos em Funcionario
 
 @section('title', 'Cobranças')
 

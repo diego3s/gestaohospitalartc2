@@ -3,8 +3,8 @@
 
 @section('content')
     <div class="container">
+        
         <h1>Cadastrar Novo Funcionário</h1>
-
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -35,7 +35,7 @@
 
             <div class="form-group">
                 <label for="cargo">Cargo</label>
-                <select class="form-control" id="cargo" name="usuario[cargo]" required>
+                <select class="form-control" id="cargo" name="usuario[cargo]" onchange="mostrarFormulario()" required>
                     <option value="" disabled selected>Selecione o cargo</option>
                     <option value="Administrativo">Administrativo</option>
                     <option value="Enfermeiro">Enfermeiro</option>
@@ -56,7 +56,80 @@
                 <input type="password" class="form-control" name="usuario[password]" required>
             </div>
 
+            <h3>Dados de Cargo do Funcionario</h3>
+
+            <!-- Formulário para Médico -->
+    <div id="form-medico" class="form-cargo" style="display: none;">
+        <label for="nome">CPF:</label>
+        <input type="text" name="medico[cpf]" class="form-control" >
+
+        <label for="crm">CRM:</label>
+        <input type="text" name="medico[crm]" class="form-control" >
+
+        <label for="especializacao">Especialização:</label>
+        <input type="text" name="medico[especializacao]" class="form-control" >
+    </div>
+
+    <!-- Formulário para Enfermeiro -->
+    <div id="form-enfermeiro" class="form-cargo" style="display: none;">
+        <label for="nome">CPF:</label>
+        <input type="text" name="enfermeiro[cpf]" class="form-control" >
+
+        <label for="coren">COREN:</label>
+        <input type="text" name="enfermeiro[coren]" id="coren" class="form-control" >
+    </div>
+
+    <!-- Formulário para Laboratorista -->
+    <div id="form-laboratorista" class="form-cargo" style="display: none;">
+        <label for="nome">CPF:</label>
+        <input type="text" name="laboratorista[cpf]" class="form-control" >
+
+        <label for="cbo">CBO:</label>
+        <input type="text" name="laboratorista[cbo]" class="form-control" id="cbo" >
+    </div>
+
+    <!-- Formulário para Administrativo -->
+    <div id="form-administrativo" class="form-cargo" style="display: none;">
+        <label for="nome">CPF:</label>
+        <input type="text" name="administrativo[cpf]" class="form-control" >
+
+        <label for="cbo">CBO:</label>
+        <input type="text" name="administrativo[cbo]" class="form-control" id="cbo" >
+    </div>
+
+    <!-- Formulário para Recepcionista -->
+    <div id="form-recepcionista" class="form-cargo" style="display: none;">
+        <label for="nome">CPF:</label>
+        <input type="text" name="recepcionista[cpf]" class="form-control" >
+    </div>
+
             <button type="submit" class="btn btn-success">Cadastrar Funcionário</button>
         </form>
     </div>
+    <script>
+        function mostrarFormulario() {
+            // Esconde todos os formulários primeiro
+            document.querySelectorAll('.form-cargo').forEach(function (form) {
+                form.style.display = 'none';
+            });
+    
+            // Pega o valor do select
+            var cargoSelecionado = document.getElementById('cargo').value;
+            
+            // Exibe o formulário correspondente ao cargo
+            if (cargoSelecionado === 'Medico') {
+                document.getElementById('form-medico').style.display = 'block';
+            } else if (cargoSelecionado === 'Enfermeiro') {
+                document.getElementById('form-enfermeiro').style.display = 'block';
+            } else if (cargoSelecionado === 'Laboratorista') {
+                document.getElementById('form-laboratorista').style.display = 'block';
+            } else if (cargoSelecionado === 'Administrativo') {
+                document.getElementById('form-administrativo').style.display = 'block';
+            } else if (cargoSelecionado === 'Recepcionista') {
+                document.getElementById('form-recepcionista').style.display = 'block';
+            }
+        }
+    </script>
 @endsection
+
+

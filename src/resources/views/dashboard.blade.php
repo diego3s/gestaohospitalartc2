@@ -1,6 +1,6 @@
 @section('content')
 <div class="container mt-5">
-    <h2 class="mb-4">Gerenciamento</h2>
+    <h2 class="mb-4">Homepage</h2>
 
     <!-- Definindo o array diretamente na view -->
     @php

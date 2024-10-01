@@ -36,7 +36,7 @@
 
             <div class="form-group">
                 <label for="cargo">Cargo</label>
-                <select class="form-control" id="cargo" name="usuario[cargo]" value="{{ old('cargo', $funcionario->user->cargo) }}" required>
+                <select class="form-control" id="cargo" name="usuario[cargo]" onchange="mostrarFormulario()" value="{{ old('cargo', $funcionario->user->cargo) }}" required>
                     <option value="Administrativo" {{ $funcionario->user->cargo == 'Administrativo' ? 'selected' : '' }}>Administrativo</option>
                     <option value="Enfermeiro" {{ $funcionario->user->cargo == 'Enfermeiro' ? 'selected' : '' }}>Enfermeiro</option>
                     <option value="Laboratorista" {{ $funcionario->user->cargo == 'Laboratorista' ? 'selected' : '' }}>Laboratorista</option>
@@ -56,7 +56,82 @@
                 <label for="senha">Senha</label>
                 <input type="password" class="form-control" name="usuario[password]" required>
             </div>
+
+            <h3>Dados de Cargo do Funcionario</h3>
+
+    <div id="form-medico" class="form-cargo" style="display: none;">
+        <label for="nome">CPF:</label>
+        <input type="text" name="medico[cpf]" value="{{ $funcionario->medico->cpf ?? '' }}" class="form-control" >
+
+        <label for="crm">CRM:</label>
+        <input type="text" name="medico[crm]" value="{{ $funcionario->medico->crm ?? ''}}"  class="form-control" >
+
+        <label for="especializacao">Especialização:</label>
+        <input type="text" name="medico[especializacao]" value="{{ $funcionario->medico->especializacao ?? ''}}" class="form-control" >
+    </div>
+
+    <div id="form-enfermeiro" class="form-cargo" style="display: none;">
+        <label for="nome">CPF:</label>
+        <input type="text" name="enfermeiro[cpf]" value="{{ $funcionario->enfermeiro->cpf ?? ''}}" class="form-control" >
+
+        <label for="coren">COREN:</label>
+        <input type="text" name="enfermeiro[coren]" id="coren" value="{{ $funcionario->enfermeiro->coren ?? ''}}" class="form-control" >
+    </div>
+
+    <div id="form-laboratorista" class="form-cargo" style="display: none;">
+        <label for="nome">CPF:</label>
+        <input type="text" name="laboratorista[cpf]" value="{{ $funcionario->laboratorista->cpf ?? ''}}" class="form-control" >
+
+        <label for="cbo">CBO:</label>
+        <input type="text" name="laboratorista[cbo]" value="{{ $funcionario->laboratorista->cbo ?? ''}}" class="form-control" id="cbo" >
+    </div>
+
+    
+    <div id="form-administrativo" class="form-cargo" style="display: none;">
+        <label for="nome">CPF:</label>
+        <input type="text" name="administrativo[cpf]" value="{{ $funcionario->administrativo->cpf ?? ''}}" class="form-control" >
+
+        <label for="cbo">CBO:</label>
+        <input type="text" name="administrativo[cbo]" class="form-control" value="{{ $funcionario->administrativo->cbo ?? ''}}" id="cbo" >
+    </div>
+
+    
+    <div id="form-recepcionista" class="form-cargo" style="display: none;">
+        <label for="nome">CPF:</label>
+        <input type="text" name="recepcionista[cpf]" value="{{ $funcionario->recepcionista->cpf ?? ''}}" class="form-control" >
+    </div>
+
             <button type="submit" class="btn btn-success">Salvar Alterações</button>
         </form>
     </div>
+
+    <script>
+
+document.addEventListener('DOMContentLoaded', function() {
+        mostrarFormulario();
+    });
+
+        function mostrarFormulario() {
+            // Esconde todos os formulários primeiro
+            document.querySelectorAll('.form-cargo').forEach(function (form) {
+                form.style.display = 'none';
+            });
+    
+            // Pega o valor do select
+            var cargoSelecionado = document.getElementById('cargo').value;
+            
+            // Exibe o formulário correspondente ao cargo
+            if (cargoSelecionado === 'Medico') {
+                document.getElementById('form-medico').style.display = 'block';
+            } else if (cargoSelecionado === 'Enfermeiro') {
+                document.getElementById('form-enfermeiro').style.display = 'block';
+            } else if (cargoSelecionado === 'Laboratorista') {
+                document.getElementById('form-laboratorista').style.display = 'block';
+            } else if (cargoSelecionado === 'Administrativo') {
+                document.getElementById('form-administrativo').style.display = 'block';
+            } else if (cargoSelecionado === 'Recepcionista') {
+                document.getElementById('form-recepcionista').style.display = 'block';
+            }
+        }
+    </script>
 @endsection

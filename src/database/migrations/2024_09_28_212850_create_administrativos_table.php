@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('administrativos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('funcionario_id')->nullable();
-            $table->string('cpf', 11);
-            $table->string('crm');
+            $table->string('cpf', 11)->nullable();
+            $table->string('cbo')->nullable();
             $table->timestamps();
 
             $table->foreign('funcionario_id')->references('id')
@@ -29,9 +29,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('administrativos');
-        Schema::table('administrativos', function (Blueprint $table){
-            $table->dropForeign(['funcionario_id']);
-            $table->dropColumn('funcionario_id');
-        });
+        
     }
 };

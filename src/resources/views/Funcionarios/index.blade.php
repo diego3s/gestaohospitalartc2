@@ -29,7 +29,7 @@
                         <td>{{ $funcionario->nome }}</td>
                         <td>{{ $funcionario->telefone }}</td>
                         <td>{{ $funcionario->salario }}</td>
-                        <td>{{ $funcionario->user->cargo }}</td>
+                        <td>{{ $funcionario->user->cargo ?? '-' }}</td>
                         <td>
                             <a href="{{ route('funcionarios.show', $funcionario->id) }}" class="btn btn-info">Visualizar</a>
                             <a href="{{ route('funcionarios.edit', $funcionario->id) }}" class="btn btn-warning">Editar</a>
@@ -38,7 +38,7 @@
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</button>
                             </form>
-                            <a class="btn btn-info">Documentos</a>
+                            <a href={{ url('/documentos/'.$funcionario->id) }} class="btn btn-info">Documentos</a>
                         </td>
                     </tr>
                 @endforeach

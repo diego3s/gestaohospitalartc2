@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('enfermeiros', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('funcionario_id')->nullable();
-            $table->string('cpf', 11);
-            $table->string('coren');
+            $table->string('cpf', 11)->nullable();
+            $table->string('coren')->nullable();
             $table->timestamps();
 
             $table->foreign('funcionario_id')->references('id')
@@ -29,9 +29,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('enfermeiros');
-        Schema::table('enfermeiros', function (Blueprint $table){
-            $table->dropForeign(['funcionario_id']);
-            $table->dropColumn('funcionario_id');
-        });
+        
     }
 };

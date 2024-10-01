@@ -2,6 +2,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Funcionario;
+use App\Models\Laboratorista;
+use App\Models\Administrativo;
+use App\Models\Medico;
+use App\Models\Enfermeiro;
+use App\Models\Recepcionista;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -29,7 +34,7 @@ class FuncionariosController extends Controller
      */
     public function store(Request $request)
     {
-
+        //dd($request->input());
         $user = new User;
         $user->fill($request->input('usuario'));
         $user->name = $request->input('funcionario.nome');
@@ -39,8 +44,43 @@ class FuncionariosController extends Controller
         $funcionario->fill($request->input('funcionario'));
 
         $funcionario->user()->associate($user);
-        $funcionario->save();        
 
+        if($request->input('usuario.cargo')=='Laboratorista'){
+            $cargo = new Laboratorista;
+            $cargo->fill($request->input('laboratorista'));
+            
+            $funcionario->laboratorista()->save($cargo);
+        }
+        if($request->input('usuario.cargo')=='Medico'){
+            $cargo = new Medico;
+            $cargo->fill($request->input('medico'));
+            $funcionario->medico()->save($cargo);
+        }
+        
+        if($request->input('usuario.cargo')=='Recepcionista'){
+            $cargo = new Recepcionista;
+            $cargo->fill($request->input('recepcionista'));
+            $cargo->funcionario()->associate($funcionario);
+            $cargo->save();
+        }
+        
+        if($request->input('usuario.cargo')=='Administrativo'){
+            $cargo = new Administrativo;
+            
+            $cargo->fill($request->input('administrativo'));
+            
+            $funcionario->administrativo()->save($cargo);
+        }
+        
+        if($request->input('usuario.cargo')=='Enfermeiro'){
+            $cargo = new Enfermeiro;
+            $cargo->fill($request->input('enfermeiro'));
+            $funcionario->enfermeiro()->save($cargo);
+        }
+
+        $cargo->save();
+        $funcionario->save();        
+        
         return redirect()->route('funcionarios.index')->with('success', 'Funcionário cadastrado com sucesso!');
     }
 

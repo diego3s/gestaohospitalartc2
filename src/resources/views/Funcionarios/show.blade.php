@@ -26,6 +26,10 @@
                 <th>Email:</th>
                 <td>{{ $funcionario->user->email ?? 'nao informado' }}</td>
             </tr>
+            <tr>
+                <th>Cargo:</th>
+                <td>{{ $funcionario->user->cargo ?? 'nao informado' }}</td>
+            </tr>
 
 
         </table>
