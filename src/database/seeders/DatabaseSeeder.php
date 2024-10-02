@@ -19,14 +19,21 @@ class DatabaseSeeder extends Seeder
             'name' => 'John Doe',
             'email' => 'john@example.com',
             'password' => Hash::make('password123'),
-            'cargo' => 'medico',
+            'cargo' => 'Medico',
+        ]);
+
+        $usr = DB::table('users')->insertGetId([
+            'name' => 'Cleber',
+            'email' => 'tc2@uems.com',
+            'password' => Hash::make('uemsddos2024'),
+            'cargo' => 'Medico',
         ]);
 
         $user2 = DB::table('users')->insertGetId([
             'name' => 'Jane Smith',
             'email' => 'jane@example.com',
             'password' => Hash::make('password123'),
-            'cargo' => 'enfermeiro',
+            'cargo' => 'Enfermeiro',
         ]);
 
         // Funcionários
