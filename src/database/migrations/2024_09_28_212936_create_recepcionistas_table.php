@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('recepcionistas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('funcionario_id')->nullable();
-            $table->string('cpf', 11)->nullable();
+            $table->string('cpf', 14)->nullable();
             $table->timestamps();
 
             $table->foreign('funcionario_id')->references('id')

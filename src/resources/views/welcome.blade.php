@@ -10,6 +10,7 @@
             'funcionarios.index' => 'Funcionários',
             'pacientes.index' => 'Pacientes',
             'financeiro' => 'Financeiro',
+            'consultas.index' => 'Consultas'
         ];
     @endphp
 
@@ -22,6 +23,8 @@
             @elseif($item == 'Pacientes')
                 <i class="bi bi-person-fill me-3"></i> <!-- Ícone para 'Pacientes' -->
             @elseif($item == 'Financeiro')
+                <i class="bi bi-person-fill me-3"></i>
+            @elseif($item == 'Consultas')
                 <i class="bi bi-person-fill me-3"></i>
             @endif
             {{ $item }}

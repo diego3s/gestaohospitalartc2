@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('laboratoristas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('funcionario_id')->nullable();
-            $table->string('cpf', 11)->nullable();
+            $table->string('cpf', 14)->nullable();
             $table->string('cbo')->nullable();
             $table->timestamps();
 

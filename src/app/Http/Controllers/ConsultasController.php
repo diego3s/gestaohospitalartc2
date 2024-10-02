@@ -37,8 +37,17 @@ class ConsultasController extends Controller
     public function store(Request $request)
     {
         //
+        
+        $paciente = Paciente::find($request->input('consulta.paciente_id'));
+        $medico = Medico::find($request->input('consulta.medico_id'));
         $consulta = new Consulta;
         $consulta->fill($request->input('consulta'));
+        $consulta->medico()->associate($medico);
+        $consulta->paciente()->associate($paciente);
+        $consulta->save();
+
+        return redirect()->route('consultas.index')->with('sucess', 'Consulta Registrada');
+
     }
 
     /**
@@ -73,5 +82,8 @@ class ConsultasController extends Controller
     public function destroy(string $id)
     {
         //
+        $consulta = Consulta::findOrFail($id);
+        $consulta->delete();
+        return redirect()->route('consultas.index')->with('sucess', 'Consulta apagada');
     }
 }

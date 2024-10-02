@@ -13,10 +13,10 @@ return new class extends Migration
 {
     Schema::create('pacientes', function (Blueprint $table) {
         $table->id();  
-        $table->string('cpf', 11);//->unique();  
+        $table->string('cpf', 14);//->unique();  
         $table->string('nome');
         $table->string('telefone', 15);
-        $table->date('data_nascimento')->nullable(); 
+        $table->string('data_nascimento')->nullable(); 
         $table->string('genero'); 
         $table->string('contato_emergencia', 15);
         $table->string('estado_civil')->nullable();  

@@ -13,11 +13,6 @@
 
 ...
 
-# create funcionario
-* Formulário Condicional
-
-jogar cargos em Funcionario
-
 @section('title', 'Cobranças')
 
 ## Implementar
