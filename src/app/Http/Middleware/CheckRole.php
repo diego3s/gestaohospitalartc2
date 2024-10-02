@@ -12,12 +12,16 @@ class CheckRole
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @param  mixed  ...$cargos  // Aceita múltiplos cargos como parâmetro
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function handle(Request $request, Closure $next, $cargo): Response
+    public function handle(Request $request, Closure $next, ...$cargos): Response
     {
-        if(!Auth::check() || Auth::user()->cargo !== $cargo)
-            return redirect('/welcome');
+        if (!Auth::check() || !in_array(Auth::user()->cargo, $cargos)) {
+            return redirect('/welcome'); // Redireciona se o cargo não for permitido
+        }
 
         return $next($request);
     }

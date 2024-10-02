@@ -57,7 +57,7 @@ class ConsultasController extends Controller
     {
         //
         $consulta = Consulta::findOrFail($id);
-        return view('consultas.show', compact('consulta'));
+        return view('Consultas.show', compact('consulta'));
     }
 
     /**

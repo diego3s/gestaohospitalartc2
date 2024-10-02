@@ -24,7 +24,7 @@ Route::resource('/pacientes', PacientesController::class);
 
 Route::get('/financeiro', function (){
     return view('financeiro');
-})->name('financeiro')->middleware('checkrole:Administrativo');
+})->name('financeiro')->middleware('checkrole:Diretor');
 
 Route::resource('/financeiro/dividas', DividasController::class);
 Route::resource('/financeiro/cobrancas', CobrancasController::class);
@@ -35,5 +35,5 @@ Route::post('/welcome', function () {
 });
 Route::get('/welcome', function () {
     return view('welcome');
-})->name('welcome');
+})->name('welcome')->middleware('checkrole:Diretor,Administrativo,Enfermeiro,Medico');
 

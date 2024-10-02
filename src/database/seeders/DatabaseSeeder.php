@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Cleber',
             'email' => 'tc2@uems.com',
             'password' => Hash::make('uemsddos2024'),
-            'cargo' => 'Medico',
+            'cargo' => 'Diretor',
         ]);
 
         $user2 = DB::table('users')->insertGetId([
